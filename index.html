@@ -1,96 +1,856 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script defer src="/_vercel/insights/script.js"></script>
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/@exampledev/new.css@1.1.2/new.min.css"
-    />
-    <title>Vercel HTML Starter</title>
-    <meta
-      name="description"
-      content="High-performance HTML based website template."
-    />
-  </head>
-  <body>
-    <h1>Vercel HTML Starter</h1>
-    <p>
-      This template is a simple, but powerful single
-      <code>index.html</code> file deployed to
-      <a href="https://vercel.com">Vercel</a>. When your site is deployed, all
-      static assets (like HTML, JavaScript, CSS, images, and more) are deployed
-      globally to every
-      <a href="https://vercel.com/docs/concepts/edge-network/overview"
-        >Vercel Edge Network</a
-      >
-      region.
-    </p>
-    <h2>Simple, privacy-friendly analytics</h2>
-    <p>
-      Want to understand your visitor traffic? Vercel Analytics gives you
-      first-party, privacy-friendly traffic analytics for your HTML site. This
-      template is already configured using the following script:
-    </p>
-    <pre><code>&lt;script defer src="/_vercel/insights/script.js"&gt;&lt;/script&gt;</code></pre>
-    <p>
-      Learn more about
-      <a href="https://vercel.com/analytics">Vercel Analytics</a>.
-    </p>
-    <h2>Integrated with git</h2>
-    <p>
-      Deploying updates to your site is as simple as
-      <code>git push</code> thanks to Vercel's advanced
-      <a href="https://vercel.com/docs/concepts/git">Git Integration</a>.
-      Support for GitHub, GitLab, Bitbucket is zero-configuration, and with the
-      flexible Vercel CLI and API, you can integrate with any tool possible.
-    </p>
-    <p>
-      Learn more about
-      <a href="https://vercel.com/docs/concepts/git">Git Integration</a>.
-    </p>
-    <h2>Fast <code>gzip</code> compression</h2>
-    <p>
-      To help ensure the smallest possible file sizes for your static assets,
-      the Vercel Edge Network compresses files by default using
-      <code>gzip</code>. You can also optionally use
-      <code>brotli</code> compressesion if you prefer.
-    </p>
-    <p>
-      Learn more about
-      <a href="https://vercel.com/docs/concepts/edge-network/compression"
-        >compression</a
-      >.
-    </p>
-    <h2>Advanced routing configuration</h2>
-    <p>
-      Vercel gives you a variety of ways to configure the routing of your
-      website. For example, adding redirects, rewrites, or headers to your page.
-      While you can use <code>vercel.json</code> to define these through JSON,
-      you can also express your routing configuration as code using
-      <a href="https://vercel.com/docs/concepts/functions/edge-middleware"
-        >Vercel Edge Middleware</a
-      >.
-    </p>
-    <p>
-      Middleware runs before the
-      <a href="https://vercel.com/docs/concepts/edge-network/caching"
-        >Vercel Edge Network Cache</a
-      >, so you can configure routing exactly as your application needs. For
-      example, this template uses <code>middleware.js</code> defined in the root
-      of the repository to add additional security headers to the site:
-    </p>
-    <pre><code>referrer-policy: origin-when-cross-origin
-strict-transport-security: max-age=31536000; includeSubDomains; preload
-x-content-type-options: nosniff
-x-dns-prefetch-control: on
-x-frame-options: DENY</code></pre>
-    <p>
-      Learn more about
-      <a href="https://vercel.com/docs/concepts/functions/edge-middleware"
-        >Vercel Edge Middleware</a
-      >.
-    </p>
-  </body>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Eleandrei Francesca Giray — Graphic Designer</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0a0a0f;
+    --surface: #12121a;
+    --card: #1a1a26;
+    --coral: #ff6b6b;
+    --mint: #4ecdc4;
+    --amber: #ffd93d;
+    --lavender: #c77dff;
+    --peach: #ffb347;
+    --white: #f5f0eb;
+    --muted: #8888aa;
+    --border: rgba(255,255,255,0.07);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--white);
+    font-family: 'DM Sans', sans-serif;
+    overflow-x: hidden;
+    cursor: none;
+  }
+
+  /* Custom cursor */
+  .cursor {
+    width: 12px; height: 12px;
+    background: var(--coral);
+    border-radius: 50%;
+    position: fixed;
+    top: 0; left: 0;
+    pointer-events: none;
+    z-index: 9999;
+    transition: transform 0.15s ease;
+    mix-blend-mode: screen;
+  }
+  .cursor-ring {
+    width: 40px; height: 40px;
+    border: 1.5px solid var(--mint);
+    border-radius: 50%;
+    position: fixed;
+    top: 0; left: 0;
+    pointer-events: none;
+    z-index: 9998;
+    transition: transform 0.35s cubic-bezier(.17,.67,.35,1.2), opacity 0.3s;
+    mix-blend-mode: screen;
+  }
+
+  /* Nav */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0;
+    z-index: 100;
+    padding: 1.4rem 4rem;
+    display: flex; justify-content: space-between; align-items: center;
+    background: rgba(10,10,15,0.8);
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-logo {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.5rem;
+    letter-spacing: 3px;
+    background: linear-gradient(90deg, var(--coral), var(--amber));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .nav-links { display: flex; gap: 2.5rem; }
+  .nav-links a {
+    color: var(--muted);
+    text-decoration: none;
+    font-size: 0.82rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    transition: color 0.3s;
+    font-weight: 500;
+  }
+  .nav-links a:hover { color: var(--mint); }
+
+  /* Hero */
+  .hero {
+    min-height: 100vh;
+    display: flex; align-items: center;
+    padding: 8rem 4rem 4rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-bg-blob {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(90px);
+    pointer-events: none;
+  }
+  .blob1 { width: 600px; height: 600px; background: rgba(255,107,107,0.12); top: -100px; right: -150px; }
+  .blob2 { width: 400px; height: 400px; background: rgba(78,205,196,0.1); bottom: 0; left: -100px; }
+  .blob3 { width: 300px; height: 300px; background: rgba(199,125,255,0.08); top: 40%; left: 40%; }
+
+  .hero-content { position: relative; z-index: 2; max-width: 720px; }
+  .hero-tag {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    background: rgba(78,205,196,0.1);
+    border: 1px solid rgba(78,205,196,0.3);
+    color: var(--mint);
+    font-size: 0.75rem;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    padding: 0.4rem 1rem;
+    border-radius: 100px;
+    margin-bottom: 1.8rem;
+    animation: fadeUp 0.8s ease both;
+  }
+  .hero-tag::before { content: '✦'; font-size: 0.6rem; }
+
+  .hero-name {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(4rem, 9vw, 8rem);
+    line-height: 0.92;
+    letter-spacing: 2px;
+    animation: fadeUp 0.9s 0.1s ease both;
+  }
+  .hero-name .highlight {
+    display: block;
+    background: linear-gradient(135deg, var(--coral) 0%, var(--amber) 50%, var(--peach) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .hero-sub {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 1.25rem;
+    color: var(--muted);
+    margin: 1.5rem 0 2.5rem;
+    animation: fadeUp 1s 0.2s ease both;
+  }
+
+  .hero-desc {
+    font-size: 0.95rem;
+    line-height: 1.8;
+    color: rgba(245,240,235,0.7);
+    max-width: 480px;
+    animation: fadeUp 1s 0.3s ease both;
+  }
+
+  .hero-cta {
+    display: flex; gap: 1rem; margin-top: 2.5rem;
+    animation: fadeUp 1s 0.4s ease both;
+  }
+  .btn-primary {
+    background: linear-gradient(135deg, var(--coral), var(--amber));
+    color: #0a0a0f;
+    font-weight: 600;
+    font-size: 0.85rem;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 0.9rem 2rem;
+    border-radius: 4px;
+    text-decoration: none;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 10px 30px rgba(255,107,107,0.35); }
+  .btn-outline {
+    border: 1px solid var(--border);
+    color: var(--white);
+    font-size: 0.85rem;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 0.9rem 2rem;
+    border-radius: 4px;
+    text-decoration: none;
+    transition: border-color 0.2s, color 0.2s;
+  }
+  .btn-outline:hover { border-color: var(--mint); color: var(--mint); }
+
+  .hero-right {
+    position: absolute; right: 4rem; top: 50%; transform: translateY(-50%);
+    z-index: 2;
+    animation: fadeLeft 1s 0.5s ease both;
+  }
+  .hero-stats {
+    display: flex; flex-direction: column; gap: 1.5rem;
+  }
+  .stat-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.2rem 1.8rem;
+    text-align: right;
+    position: relative;
+    overflow: hidden;
+  }
+  .stat-card::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0; height: 2px;
+  }
+  .stat-card:nth-child(1)::before { background: linear-gradient(90deg, var(--coral), var(--amber)); }
+  .stat-card:nth-child(2)::before { background: linear-gradient(90deg, var(--mint), var(--lavender)); }
+  .stat-card:nth-child(3)::before { background: linear-gradient(90deg, var(--amber), var(--peach)); }
+  .stat-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 2.5rem;
+    background: linear-gradient(135deg, var(--coral), var(--amber));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .stat-label { font-size: 0.72rem; color: var(--muted); letter-spacing: 2px; text-transform: uppercase; }
+
+  /* Marquee */
+  .marquee-wrap {
+    overflow: hidden;
+    background: var(--coral);
+    padding: 0.9rem 0;
+    position: relative;
+  }
+  .marquee-track {
+    display: flex; white-space: nowrap;
+    animation: marquee 18s linear infinite;
+  }
+  .marquee-item {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1rem;
+    letter-spacing: 4px;
+    color: #0a0a0f;
+    padding: 0 2rem;
+    opacity: 0.9;
+  }
+  .marquee-sep { color: rgba(10,10,15,0.4); }
+
+  /* Section base */
+  section { padding: 7rem 4rem; }
+  .section-label {
+    display: flex; align-items: center; gap: 1rem;
+    font-size: 0.72rem; letter-spacing: 4px; text-transform: uppercase;
+    color: var(--coral);
+    margin-bottom: 1rem;
+  }
+  .section-label::before {
+    content: ''; display: block;
+    width: 32px; height: 1px;
+    background: var(--coral);
+  }
+  .section-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(2.5rem, 5vw, 4.5rem);
+    line-height: 1;
+    letter-spacing: 1px;
+    margin-bottom: 1rem;
+  }
+  .section-title span {
+    background: linear-gradient(135deg, var(--mint), var(--lavender));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  /* About */
+  #about {
+    background: var(--surface);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
+  .about-text p {
+    font-size: 1rem;
+    line-height: 1.9;
+    color: rgba(245,240,235,0.75);
+    margin-bottom: 1.2rem;
+  }
+  .skills-chips {
+    display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 2rem;
+  }
+  .chip {
+    background: var(--card);
+    border: 1px solid var(--border);
+    padding: 0.4rem 0.9rem;
+    border-radius: 100px;
+    font-size: 0.78rem;
+    letter-spacing: 1px;
+    color: var(--mint);
+    transition: all 0.2s;
+  }
+  .chip:hover { background: rgba(78,205,196,0.15); border-color: var(--mint); }
+
+  .about-right { display: flex; flex-direction: column; gap: 1.2rem; }
+  .exp-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 1.4rem 1.6rem;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+  .exp-card:hover { transform: translateX(6px); box-shadow: -4px 0 20px rgba(255,107,107,0.15); }
+  .exp-card::before {
+    content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 3px;
+    background: linear-gradient(180deg, var(--coral), var(--amber));
+  }
+  .exp-card:nth-child(2)::before { background: linear-gradient(180deg, var(--mint), var(--lavender)); }
+  .exp-card:nth-child(3)::before { background: linear-gradient(180deg, var(--amber), var(--peach)); }
+  .exp-card:nth-child(4)::before { background: linear-gradient(180deg, var(--lavender), var(--coral)); }
+  .exp-role {
+    font-weight: 600; font-size: 0.9rem;
+    margin-bottom: 0.2rem;
+  }
+  .exp-company {
+    font-size: 0.78rem; color: var(--coral);
+    letter-spacing: 1px; text-transform: uppercase;
+    margin-bottom: 0.3rem;
+  }
+  .exp-year {
+    font-size: 0.72rem; color: var(--muted);
+    font-family: 'Playfair Display', serif; font-style: italic;
+  }
+
+  /* Works */
+  #works { background: var(--bg); }
+  .works-intro {
+    display: flex; justify-content: space-between; align-items: flex-end;
+    margin-bottom: 3.5rem;
+  }
+  .works-intro p { color: var(--muted); font-size: 0.9rem; max-width: 360px; line-height: 1.7; }
+
+  /* Masonry-style grid */
+  .works-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.2rem;
+  }
+
+  .work-item {
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px;
+    background: var(--card);
+    cursor: none;
+    group: true;
+  }
+  .work-item:nth-child(1) { grid-row: span 2; }
+  .work-item:nth-child(4) { grid-column: span 2; }
+  .work-item:nth-child(7) { grid-row: span 2; }
+
+  .work-item img {
+    width: 100%; height: 100%; min-height: 220px;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.6s cubic-bezier(.16,1,.3,1), filter 0.4s;
+    filter: saturate(0.9);
+  }
+  .work-item:hover img { transform: scale(1.06); filter: saturate(1.15); }
+
+  .work-overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(to top, rgba(10,10,15,0.9) 0%, rgba(10,10,15,0.2) 50%, transparent 100%);
+    opacity: 0;
+    transition: opacity 0.4s;
+    display: flex; align-items: flex-end;
+    padding: 1.4rem;
+  }
+  .work-item:hover .work-overlay { opacity: 1; }
+  .work-meta { }
+  .work-cat {
+    font-size: 0.68rem; letter-spacing: 3px; text-transform: uppercase;
+    color: var(--coral); margin-bottom: 0.3rem;
+  }
+  .work-title { font-family: 'Playfair Display', serif; font-size: 1rem; }
+
+  /* Tools */
+  #tools {
+    background: var(--surface);
+    border-top: 1px solid var(--border);
+    text-align: center;
+  }
+  .tools-grid { display: flex; justify-content: center; gap: 2rem; margin-top: 3rem; flex-wrap: wrap; }
+  .tool-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 2rem 2.5rem;
+    display: flex; flex-direction: column; align-items: center; gap: 0.8rem;
+    transition: all 0.3s;
+    min-width: 130px;
+  }
+  .tool-card:hover { transform: translateY(-6px); border-color: var(--amber); box-shadow: 0 16px 40px rgba(255,217,61,0.1); }
+  .tool-icon { font-size: 2.2rem; }
+  .tool-name { font-size: 0.8rem; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); }
+
+  /* Contact */
+  #contact {
+    background: var(--bg);
+    border-top: 1px solid var(--border);
+  }
+  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
+  .contact-left .big-text {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(3rem, 6vw, 5.5rem);
+    line-height: 0.95;
+    letter-spacing: 1px;
+    margin-bottom: 2rem;
+  }
+  .contact-left .big-text span {
+    display: block;
+    background: linear-gradient(135deg, var(--coral), var(--amber));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .contact-info { display: flex; flex-direction: column; gap: 1rem; }
+  .contact-row {
+    display: flex; align-items: center; gap: 1rem;
+    padding: 1rem 1.2rem;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    text-decoration: none;
+    color: var(--white);
+    transition: all 0.3s;
+  }
+  .contact-row:hover { border-color: var(--mint); background: rgba(78,205,196,0.07); transform: translateX(5px); }
+  .contact-icon { font-size: 1.2rem; width: 40px; text-align: center; }
+  .contact-detail { font-size: 0.88rem; }
+  .contact-detail small { display: block; font-size: 0.7rem; color: var(--muted); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 0.15rem; }
+
+  /* Footer */
+  footer {
+    background: var(--surface);
+    border-top: 1px solid var(--border);
+    padding: 2rem 4rem;
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .footer-logo {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.1rem; letter-spacing: 3px;
+    background: linear-gradient(90deg, var(--coral), var(--amber));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  footer p { font-size: 0.75rem; color: var(--muted); }
+
+  /* Animations */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes fadeLeft {
+    from { opacity: 0; transform: translate(30px, -50%); }
+    to { opacity: 1; transform: translate(0, -50%); }
+  }
+  @keyframes marquee {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+  @keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-12px); }
+  }
+
+  .scroll-reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+  .scroll-reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Decorative number */
+  .section-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 8rem;
+    color: rgba(255,255,255,0.03);
+    position: absolute;
+    top: 2rem; right: 4rem;
+    line-height: 1;
+    user-select: none;
+    pointer-events: none;
+  }
+
+  /* Gradient divider */
+  .gradient-line {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--coral), var(--amber), var(--mint), transparent);
+    margin: 0;
+  }
+</style>
+</head>
+<body>
+
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">EFG</div>
+  <div class="nav-links">
+    <a href="#about">About</a>
+    <a href="#works">Works</a>
+    <a href="#tools">Tools</a>
+    <a href="#contact">Contact</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg-blob blob1"></div>
+  <div class="hero-bg-blob blob2"></div>
+  <div class="hero-bg-blob blob3"></div>
+
+  <div class="hero-content">
+    <div class="hero-tag">Available for freelance</div>
+    <h1 class="hero-name">
+      ELEANDREI<br>
+      <span class="highlight">FRANCESCA</span>
+      GIRAY
+    </h1>
+    <p class="hero-sub">Graphic Designer · Social Media Creative · Brand Storyteller</p>
+    <p class="hero-desc">Creative and detail-oriented designer with experience in social media design, branding, poster layouts, and digital content creation. Skilled in Canva with a strong eye for modern aesthetics and visual storytelling.</p>
+    <div class="hero-cta">
+      <a href="#works" class="btn-primary">View My Work</a>
+      <a href="#contact" class="btn-outline">Let's Talk</a>
+    </div>
+  </div>
+
+  <div class="hero-right">
+    <div class="hero-stats">
+      <div class="stat-card">
+        <div class="stat-num">7+</div>
+        <div class="stat-label">Years Experience</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">4</div>
+        <div class="stat-label">Industries</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">∞</div>
+        <div class="stat-label">Creative Possibilities</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee-wrap">
+  <div class="marquee-track">
+    <span class="marquee-item">GRAPHIC DESIGN</span><span class="marquee-item marquee-sep">✦</span>
+    <span class="marquee-item">SOCIAL MEDIA</span><span class="marquee-item marquee-sep">✦</span>
+    <span class="marquee-item">BRANDING</span><span class="marquee-item marquee-sep">✦</span>
+    <span class="marquee-item">CONTENT CREATION</span><span class="marquee-item marquee-sep">✦</span>
+    <span class="marquee-item">LAYOUT DESIGN</span><span class="marquee-item marquee-sep">✦</span>
+    <span class="marquee-item">MARKETING</span><span class="marquee-item marquee-sep">✦</span>
+    <span class="marquee-item">DIGITAL STORYTELLING</span><span class="marquee-item marquee-sep">✦</span>
+    <!-- duplicate for seamless loop -->
+    <span class="marquee-item">GRAPHIC DESIGN</span><span class="marquee-item marquee-sep">✦</span>
+    <span class="marquee-item">SOCIAL MEDIA</span><span class="marquee-item marquee-sep">✦</span>
+    <span class="marquee-item">BRANDING</span><span class="marquee-item marquee-sep">✦</span>
+    <span class="marquee-item">CONTENT CREATION</span><span class="marquee-item marquee-sep">✦</span>
+    <span class="marquee-item">LAYOUT DESIGN</span><span class="marquee-item marquee-sep">✦</span>
+    <span class="marquee-item">MARKETING</span><span class="marquee-item marquee-sep">✦</span>
+    <span class="marquee-item">DIGITAL STORYTELLING</span><span class="marquee-item marquee-sep">✦</span>
+  </div>
+</div>
+
+<div class="gradient-line"></div>
+
+<!-- ABOUT -->
+<section id="about" style="position:relative;">
+  <div class="section-num">01</div>
+  <div class="about-grid">
+    <div class="about-text scroll-reveal">
+      <div class="section-label">Who I Am</div>
+      <h2 class="section-title">CRAFTING <span>VISUALS</span><br>THAT SPEAK</h2>
+      <p>I'm a Graphic Designer and Social Media Manager based in Sorsogon City, Philippines. My work lives at the intersection of aesthetics and strategy — creating designs that don't just look beautiful, but actually move people.</p>
+      <p>From café menus to real estate marketing to staffing agency campaigns, I've shaped brand voices across industries. Every pixel I place is intentional, every layout tells a story.</p>
+      <div class="skills-chips">
+        <span class="chip">Social Media Design</span>
+        <span class="chip">Layout Design</span>
+        <span class="chip">Content Creation</span>
+        <span class="chip">Marketing Materials</span>
+        <span class="chip">Branding & Logo Design</span>
+        <span class="chip">Responsive Design</span>
+        <span class="chip">Campaign Strategy</span>
+        <span class="chip">Property Marketing</span>
+      </div>
+    </div>
+    <div class="about-right scroll-reveal" style="transition-delay:0.15s;">
+      <div class="exp-card">
+        <div class="exp-role">Social Media Manager · Real Estate</div>
+        <div class="exp-company">KW Legacy & Arriola Realty</div>
+        <div class="exp-year">2025 – Present</div>
+      </div>
+      <div class="exp-card">
+        <div class="exp-role">Social Media Manager · Talent Acquisition</div>
+        <div class="exp-company">L2 Placement Pros</div>
+        <div class="exp-year">2024 – 2025</div>
+      </div>
+      <div class="exp-card">
+        <div class="exp-role">Manager & Social Media</div>
+        <div class="exp-company">Graceland Food Industries Inc.</div>
+        <div class="exp-year">2024 – 2025</div>
+      </div>
+      <div class="exp-card">
+        <div class="exp-role">Marketing Representative</div>
+        <div class="exp-company">Bicol Auto-Search</div>
+        <div class="exp-year">2019 – 2022</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="gradient-line"></div>
+
+<!-- WORKS -->
+<section id="works" style="position:relative;">
+  <div class="section-num">02</div>
+  <div class="works-intro scroll-reveal">
+    <div>
+      <div class="section-label">Portfolio</div>
+      <h2 class="section-title">SELECTED <span>WORKS</span></h2>
+    </div>
+    <p>A collection of design work across food & beverage, real estate, and staffing industries.</p>
+  </div>
+
+  <div class="works-grid">
+
+    <div class="work-item scroll-reveal">
+      <img src="/mnt/user-data/uploads/1.png" alt="CUPtivated Premium Matcha Edition">
+      <div class="work-overlay">
+        <div class="work-meta">
+          <div class="work-cat">Promotional Poster · F&B</div>
+          <div class="work-title">CUPtivated — Premium Matcha Edition</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="work-item scroll-reveal" style="transition-delay:0.1s;">
+      <img src="/mnt/user-data/uploads/2.png" alt="CUPtivated Coffee Menu">
+      <div class="work-overlay">
+        <div class="work-meta">
+          <div class="work-cat">Menu Design · F&B</div>
+          <div class="work-title">CUPtivated — Full Coffee Menu</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="work-item scroll-reveal" style="transition-delay:0.2s;">
+      <img src="/mnt/user-data/uploads/5.png" alt="KW Legacy Top Five Features">
+      <div class="work-overlay">
+        <div class="work-meta">
+          <div class="work-cat">Social Media · Real Estate</div>
+          <div class="work-title">KW Legacy — Top Five Features</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="work-item scroll-reveal" style="transition-delay:0.05s;">
+      <img src="/mnt/user-data/uploads/3.png" alt="CUPtivated Cafe Menu">
+      <div class="work-overlay">
+        <div class="work-meta">
+          <div class="work-cat">Menu Design · F&B</div>
+          <div class="work-title">CUPtivated — Café Food Menu</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="work-item scroll-reveal" style="transition-delay:0.15s;">
+      <img src="/mnt/user-data/uploads/6.png" alt="KW Legacy Dream Home">
+      <div class="work-overlay">
+        <div class="work-meta">
+          <div class="work-cat">Social Media · Real Estate</div>
+          <div class="work-title">KW Legacy — Your Dream Home</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="work-item scroll-reveal" style="transition-delay:0.25s;">
+      <img src="/mnt/user-data/uploads/7.png" alt="KW Legacy Hidden Costs">
+      <div class="work-overlay">
+        <div class="work-meta">
+          <div class="work-cat">Social Media · Real Estate</div>
+          <div class="work-title">KW Legacy — 5 Hidden Costs</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="work-item scroll-reveal" style="transition-delay:0.1s;">
+      <img src="/mnt/user-data/uploads/8.png" alt="L2 Placement Pros Services">
+      <div class="work-overlay">
+        <div class="work-meta">
+          <div class="work-cat">Brand Poster · Staffing</div>
+          <div class="work-title">L2 Placement Pros — Services</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="work-item scroll-reveal" style="transition-delay:0.2s;">
+      <img src="/mnt/user-data/uploads/4.png" alt="KW Legacy Home Buying Process">
+      <div class="work-overlay">
+        <div class="work-meta">
+          <div class="work-cat">Infographic · Real Estate</div>
+          <div class="work-title">KW Legacy — Home Buying Process</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="work-item scroll-reveal" style="transition-delay:0.3s;">
+      <img src="/mnt/user-data/uploads/MANGO_MATCHA.png" alt="Mango Matcha">
+      <div class="work-overlay">
+        <div class="work-meta">
+          <div class="work-cat">Product Visual · F&B</div>
+          <div class="work-title">CUPtivated — Mango Matcha</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div class="gradient-line"></div>
+
+<!-- TOOLS -->
+<section id="tools">
+  <div class="section-label" style="justify-content:center;">Arsenal</div>
+  <h2 class="section-title" style="text-align:center;">MY <span>TOOLS</span></h2>
+  <div class="tools-grid">
+    <div class="tool-card scroll-reveal">
+      <div class="tool-icon">🎨</div>
+      <div class="tool-name">Canva</div>
+    </div>
+    <div class="tool-card scroll-reveal" style="transition-delay:0.1s;">
+      <div class="tool-icon">🎬</div>
+      <div class="tool-name">CapCut</div>
+    </div>
+    <div class="tool-card scroll-reveal" style="transition-delay:0.2s;">
+      <div class="tool-icon">📊</div>
+      <div class="tool-name">MS Office</div>
+    </div>
+    <div class="tool-card scroll-reveal" style="transition-delay:0.3s;">
+      <div class="tool-icon">🏡</div>
+      <div class="tool-name">Lofty</div>
+    </div>
+    <div class="tool-card scroll-reveal" style="transition-delay:0.4s;">
+      <div class="tool-icon">📱</div>
+      <div class="tool-name">Social Media</div>
+    </div>
+  </div>
+</section>
+
+<div class="gradient-line"></div>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="contact-grid">
+    <div class="contact-left scroll-reveal">
+      <div class="section-label">Get In Touch</div>
+      <div class="big-text">
+        LET'S CREATE<br>
+        <span>SOMETHING</span>
+        GREAT
+      </div>
+      <p style="color:var(--muted); font-size:0.9rem; line-height:1.8; max-width:380px;">
+        Open to freelance projects, full-time roles, and creative collaborations. If you have a brand that needs a visual voice — I'm your designer.
+      </p>
+    </div>
+    <div class="contact-info scroll-reveal" style="transition-delay:0.15s;">
+      <a class="contact-row" href="mailto:eleandreifrancescagiray@gmail.com">
+        <div class="contact-icon">✉️</div>
+        <div class="contact-detail">
+          <small>Email</small>
+          eleandreifrancescagiray@gmail.com
+        </div>
+      </a>
+      <a class="contact-row" href="tel:+639922698639">
+        <div class="contact-icon">📞</div>
+        <div class="contact-detail">
+          <small>Phone</small>
+          (+63) 992-269-8639
+        </div>
+      </a>
+      <div class="contact-row">
+        <div class="contact-icon">📍</div>
+        <div class="contact-detail">
+          <small>Location</small>
+          Sorsogon City, Sorsogon, Philippines
+        </div>
+      </div>
+      <div class="contact-row">
+        <div class="contact-icon">🎓</div>
+        <div class="contact-detail">
+          <small>Education</small>
+          BS Business Administration — The Lewis College
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">ELEANDREI FRANCESCA GIRAY</div>
+  <p>© 2026 · Graphic Designer · Sorsogon, PH</p>
+  <p style="font-size:0.72rem; color:var(--muted);">Made with ✦ and caffeine</p>
+</footer>
+
+<script>
+  // Custom cursor
+  const cursor = document.getElementById('cursor');
+  const ring = document.getElementById('cursorRing');
+  let mouseX = 0, mouseY = 0;
+  let ringX = 0, ringY = 0;
+
+  document.addEventListener('mousemove', e => {
+    mouseX = e.clientX;
+    mouseY = e.clientY;
+    cursor.style.transform = `translate(${mouseX - 6}px, ${mouseY - 6}px)`;
+  });
+
+  function animateRing() {
+    ringX += (mouseX - ringX - 20) * 0.12;
+    ringY += (mouseY - ringY - 20) * 0.12;
+    ring.style.transform = `translate(${ringX}px, ${ringY}px)`;
+    requestAnimationFrame(animateRing);
+  }
+  animateRing();
+
+  // Hover states
+  document.querySelectorAll('a, .work-item, .tool-card, .exp-card').forEach(el => {
+    el.addEventListener('mouseenter', () => {
+      cursor.style.transform += ' scale(1.8)';
+      ring.style.opacity = '0.5';
+    });
+    el.addEventListener('mouseleave', () => {
+      ring.style.opacity = '1';
+    });
+  });
+
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.scroll-reveal');
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1 });
+  reveals.forEach(el => observer.observe(el));
+</script>
+</body>
 </html>
